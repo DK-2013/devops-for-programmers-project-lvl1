@@ -1,6 +1,9 @@
 services:
   app:
-    build: .
+    image: kdm1/devops-for-programmers-project-lvl1
+    build:
+      context: .
+      dockerfile: Dockerfile.production
     volumes:
       - .:/app
-    command: npm test
+    command: make test

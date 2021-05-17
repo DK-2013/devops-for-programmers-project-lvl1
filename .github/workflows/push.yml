@@ -6,7 +6,7 @@ on:
       - 'check_github_actions'
 
 env:
-  APP_IMAGE_NAME: ${{ secrets.DOCKER_HUB_USERNAME }}/devops-for-programmers-project-lvl1
+  APP_IMAGE_NAME: kdm1/devops-for-programmers-project-lvl1
 
 jobs:
   docker:
@@ -49,7 +49,8 @@ jobs:
 
       - name: Check
         run: |
-          docker-compose --file docker-compose.yml up --abort-on-container-exit
+          docker run -w /app ${{ env.APP_IMAGE_NAME }}:cached make test
+#          docker-compose --file docker-compose.yml up --abort-on-container-exit
 
       - name: Push
         uses: docker/build-push-action@v2

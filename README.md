@@ -9,3 +9,6 @@ docker run -e NODOS_HOST=0.0.0.0 -p 8080:8080 kdm1/devops-for-programmers-projec
 see on localhost:8080
 
 [setup CI](https://docs.docker.com/ci-cd/github-actions/)
+[mp actions](https://github.com/marketplace?type=actions)
+[github status](https://www.githubstatus.com/)
+[githubactions + docker](https://dev.to/mihinduranasinghe/using-docker-containers-in-jobs-github-actions-3eof)

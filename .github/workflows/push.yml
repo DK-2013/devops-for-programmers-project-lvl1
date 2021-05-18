@@ -38,10 +38,10 @@ jobs:
         with:
           context: .
           file: Dockerfile.production
-#          cache-from: type=local,src=/tmp/.buildx-cache
-#          cache-to: type=local,dest=/tmp/.buildx-cache
-          cache-from: type=registry,ref=${{ env.APP_IMAGE_NAME }}:cached
-          cache-to: type=inline
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+#          cache-from: type=registry,ref=${{ env.APP_IMAGE_NAME }}:cached
+#          cache-to: type=inline
           tags: ${{ env.APP_IMAGE_NAME }}:cached
 
       - name: Image digest
@@ -59,7 +59,7 @@ jobs:
         with:
           context: .
           file: Dockerfile.production
-#          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-from: type=registry,ref=${{ env.APP_IMAGE_NAME }}:cached
+          cache-from: type=local,src=/tmp/.buildx-cache
+#          cache-from: type=registry,ref=${{ env.APP_IMAGE_NAME }}:cached
           push: true
           tags: ${{ env.APP_IMAGE_NAME }}:latest

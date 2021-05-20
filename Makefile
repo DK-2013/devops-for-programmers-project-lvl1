@@ -34,3 +34,6 @@ prune:
 pruny:
 	docker container prune -f
 	docker rmi kdm1/devops-for-programmers-project-lvl1
+
+ping:
+	echo pong

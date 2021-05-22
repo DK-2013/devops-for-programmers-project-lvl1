@@ -5,5 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile.production
     volumes:
-      - .:/app
+      - code:/app
     command: make test
+volumes:
+  code: {}

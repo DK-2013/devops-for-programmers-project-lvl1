@@ -9,7 +9,16 @@ env:
   APP_IMAGE_NAME: kdm1/devops-for-programmers-project-lvl1
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run tests
+        run: |
+          docker-compose --file docker-compose.yml up --abort-on-container-exit
   docker:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,8 +33,7 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      - name: Build App
-        id: docker_build
+      - name: Push
         uses: docker/build-push-action@v2
         with:
           context: .
@@ -35,5 +43,4 @@ jobs:
 
       - name: Image digest
         run: |
-          echo ${{ env.APP_IMAGE_NAME }}
           echo ${{ steps.docker_build.outputs.digest }}

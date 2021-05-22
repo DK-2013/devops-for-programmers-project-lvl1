@@ -9,3 +9,19 @@ services:
     ports:
       - "8080:8080"
     command: make server
+  caddy:
+    image: caddy:2.3.0
+    ports:
+      - "443:443"
+      - "80:80"
+    volumes:
+      - "./services/caddy/Caddyfile:/etc/caddy/Caddyfile"
+      - .:/app
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - app
+
+volumes:
+  caddy_data:
+  caddy_config:

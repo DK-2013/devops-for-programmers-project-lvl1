@@ -3,7 +3,7 @@ name: ci
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
 
 env:
   APP_IMAGE_NAME: kdm1/devops-for-programmers-project-lvl1
